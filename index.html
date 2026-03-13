@@ -4,26 +4,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cup Haven</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
+:root {
+    --bg-color: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+    --text-color: #333;
+    --header-bg: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+    --card-bg: white;
+    --feature-bg: #fff;
+    --footer-bg: linear-gradient(135deg, #333 0%, #555 100%);
+    --accent: #8b4513;
+    --button-bg: #ffd700;
+    --button-hover: #ffed4e;
+    --shadow: rgba(0,0,0,0.1);
+    --shadow-hover: rgba(0,0,0,0.2);
+}
+
+.dark-mode {
+    --bg-color: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --text-color: #e0e0e0;
+    --header-bg: linear-gradient(135deg, #4a2c17 0%, #6d4423 100%);
+    --card-bg: #2a2a2a;
+    --feature-bg: #1a1a1a;
+    --footer-bg: linear-gradient(135deg, #111 0%, #333 100%);
+    --accent: #d4a574;
+    --button-bg: #ffd700;
+    --button-hover: #ffed4e;
+    --shadow: rgba(0,0,0,0.3);
+    --shadow-hover: rgba(0,0,0,0.5);
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f5f5;
+    font-family:'Poppins', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Header */
 header{
-    background:#6b3e26;
+    background: var(--header-bg);
     color:white;
     padding:20px;
+    box-shadow: 0 2px 10px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav h2 {
+    margin: 0;
 }
 
 nav ul{
@@ -35,14 +79,58 @@ nav ul{
 nav a{
     color:white;
     text-decoration:none;
-    font-weight:bold;
+    font-weight:600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover{
+    color: #ffd700;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cart-icon {
+    position: relative;
+    margin-left: 10px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ffd700;
+    color: #333;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 /* Hero Section */
 .hero{
-    height:60vh;
-    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93");
+    height:70vh;
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80");
     background-size:cover;
     background-position:center;
     display:flex;
@@ -50,50 +138,250 @@ nav a{
     align-items:center;
     color:white;
     text-align:center;
+    position: relative;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(139, 69, 19, 0.2);
+    z-index: 1;
+}
+
+.hero > div {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1{
-    font-size:50px;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background: var(--button-bg);
+    color: #333;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
 /* Products */
 .products{
-    padding:50px;
+    padding: 60px 20px;
     text-align:center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--accent);
 }
 
 .product-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
     margin-top:30px;
 }
 
 .card{
-    background:white;
-    border-radius:10px;
+    background: var(--card-bg);
+    border-radius:15px;
     padding:20px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    box-shadow:0 4px 20px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px var(--shadow-hover);
 }
 
 .card img{
     width:100%;
+    height: 200px;
+    object-fit: cover;
     border-radius:10px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
 }
 
 .card h3{
-    margin:10px 0;
+    margin:15px 0 10px;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+.card p {
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.add-to-cart {
+    background: var(--button-bg);
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background: var(--button-hover);
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background: var(--feature-bg);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--accent);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.feature {
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.feature p {
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
 /* Footer */
 footer{
-    background:#333;
+    background: var(--footer-bg);
     color:white;
     text-align:center;
-    padding:20px;
+    padding:30px 20px;
     margin-top:40px;
 }
 
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--header-bg);
+        padding: 20px;
+        box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .products h2, .features h2 {
+        font-size: 2rem;
+    }
+
+    .product-grid, .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card, .feature {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}
 </style>
 </head>
 
@@ -102,55 +390,125 @@ footer{
 <header>
 <nav>
 <h2>Cup Haven ☕</h2>
-
+<div>
 <ul>
 <li><a href="#">Home</a></li>
-<li><a href="#">Cups</a></li>
+<li><a href="#">Shop</a></li>
 <li><a href="#">About</a></li>
 <li><a href="#">Contact</a></li>
 </ul>
-
+<button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+<button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+<div class="cart-icon">
+<i class="fas fa-shopping-cart"></i>
+<span class="cart-count" id="cart-count">0</span>
+</div>
+</div>
 </nav>
 </header>
 
 <section class="hero">
 <div>
 <h1>Perfect Cups for Coffee Lovers</h1>
-<p>Find your favorite mug today</p>
+<p>Discover exquisite mugs that make every sip special</p>
+<a href="#products" class="cta-button">Shop Now</a>
 </div>
 </section>
 
-<section class="products">
-
+<section id="products" class="products">
 <h2>Our Cups</h2>
-
 <div class="product-grid">
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Classic Mug">
 <h3>Classic Mug</h3>
 <p>$10</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9">
+<img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ceramic Cup">
 <h3>Ceramic Cup</h3>
 <p>$12</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096">
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Travel Mug">
 <h3>Travel Mug</h3>
 <p>$15</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
 </div>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Vintage Mug">
+<h3>Vintage Mug</h3>
+<p>$18</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
 </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Insulated Mug">
+<h3>Insulated Mug</h3>
+<p>$20</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Colorful Mug">
+<h3>Colorful Mug</h3>
+<p>$14</p>
+<button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+</div>
+</div>
+</section>
 
+<section class="features">
+<h2>Why Choose Cup Haven?</h2>
+<div class="feature-grid">
+<div class="feature">
+<h3>Quality Materials</h3>
+<p>Handcrafted from premium ceramics and durable materials.</p>
+</div>
+<div class="feature">
+<h3>Unique Designs</h3>
+<p>Each cup is designed to bring joy to your daily coffee ritual.</p>
+</div>
+<div class="feature">
+<h3>Fast Shipping</h3>
+<p>Get your favorite mug delivered quickly and safely.</p>
+</div>
+<div class="feature">
+<h3>Customer Satisfaction</h3>
+<p>100% satisfaction guarantee on all our products.</p>
+</div>
+</div>
 </section>
 
 <footer>
-<p>© 2026 Cup Haven | All Rights Reserved</p>
+<p>© 2026 Cup Haven | All Rights Reserved | Made with ❤️ for coffee lovers</p>
 </footer>
+
+<script>
+let cartCount = 0;
+const cartCountEl = document.getElementById('cart-count');
+const themeToggle = document.getElementById('theme-toggle');
+const menuToggle = document.getElementById('menu-toggle');
+const navUl = document.querySelector('nav ul');
+
+function addToCart() {
+    cartCount++;
+    cartCountEl.textContent = cartCount;
+    // Simple animation
+    cartCountEl.style.transform = 'scale(1.2)';
+    setTimeout(() => cartCountEl.style.transform = 'scale(1)', 200);
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const icon = themeToggle.querySelector('i');
+    icon.classList.toggle('fa-moon');
+    icon.classList.toggle('fa-sun');
+});
+
+menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
