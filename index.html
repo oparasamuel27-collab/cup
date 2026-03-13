@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultimate Champions Cup</title>
+<title>Global Champions Cup</title>
 
 <style>
-
-/* Reset */
 
 *{
 margin:0;
@@ -17,14 +15,14 @@ font-family:Arial, sans-serif;
 }
 
 body{
-background:#f2f2f2;
-color:#333;
+background:#0f172a;
+color:white;
 }
 
-/* Navbar */
+/* NAVBAR */
 
 header{
-background:#0b0b0b;
+background:#020617;
 padding:20px;
 }
 
@@ -32,14 +30,14 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 }
 
 .logo{
-color:#fff;
 font-size:24px;
 font-weight:bold;
+color:#38bdf8;
 }
 
 nav ul{
@@ -51,31 +49,29 @@ gap:25px;
 nav a{
 color:white;
 text-decoration:none;
-font-weight:bold;
-transition:0.3s;
+transition:.3s;
 }
 
 nav a:hover{
-color:#ffd700;
+color:#38bdf8;
 }
 
-/* Hero */
+/* HERO */
 
 .hero{
-height:70vh;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
 url("https://images.unsplash.com/photo-1508098682722-e99c643e7f0b");
 background-size:cover;
 background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
 }
 
 .hero h1{
-font-size:60px;
+font-size:65px;
 }
 
 .hero p{
@@ -83,91 +79,113 @@ margin-top:10px;
 font-size:20px;
 }
 
-/* Section */
+/* SECTION */
 
 section{
-padding:60px 20px;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
+padding:70px 20px;
 }
 
-.section-title{
+.title{
 text-align:center;
-margin-bottom:40px;
-font-size:32px;
+margin-bottom:50px;
+font-size:35px;
 }
 
-/* Teams */
+/* TEAMS */
 
 .teams{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
 }
 
-.team-card{
-background:white;
-padding:25px;
-border-radius:10px;
+.team{
+background:#1e293b;
+padding:30px;
+border-radius:12px;
 text-align:center;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+transition:.3s;
 }
 
-.team-card:hover{
-transform:translateY(-8px);
+.team:hover{
+transform:translateY(-10px);
+background:#334155;
 }
 
-.team-card img{
+.team img{
 width:70px;
 margin-bottom:15px;
 }
 
-/* Matches */
+/* MATCHES */
 
 .matches{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .match{
-background:white;
-padding:20px;
+background:#1e293b;
+padding:25px;
 border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
 text-align:center;
 }
 
-/* Table */
+/* TABLE */
 
 table{
 width:100%;
 border-collapse:collapse;
-background:white;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
 }
 
 th,td{
 padding:15px;
 text-align:center;
-border-bottom:1px solid #ddd;
+border-bottom:1px solid #334155;
 }
 
 th{
-background:#111;
-color:white;
+background:#38bdf8;
+color:black;
 }
 
-/* Footer */
+/* BRACKET */
+
+.bracket{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.round{
+flex:1;
+}
+
+.game{
+background:#1e293b;
+padding:15px;
+margin:15px 0;
+border-radius:8px;
+text-align:center;
+}
+
+/* FOOTER */
 
 footer{
-background:#0b0b0b;
-color:white;
+background:#020617;
 text-align:center;
 padding:25px;
 margin-top:40px;
 }
+
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -175,9 +193,8 @@ margin-top:40px;
 font-size:40px;
 }
 
-nav ul{
-gap:15px;
-font-size:14px;
+.bracket{
+flex-direction:column;
 }
 
 }
@@ -189,7 +206,8 @@ font-size:14px;
 
 <header>
 <nav>
-<div class="logo">🏆 Champions Cup</div>
+
+<div class="logo">🏆 Global Cup</div>
 
 <ul>
 <li><a href="#">Home</a></li>
@@ -202,34 +220,36 @@ font-size:14px;
 </header>
 
 <section class="hero">
+
 <div>
-<h1>Champions Cup 2026</h1>
-<p>The ultimate football showdown</p>
+<h1>Global Champions Cup</h1>
+<p>The biggest football tournament of the year</p>
 </div>
+
 </section>
 
 <section>
 
-<h2 class="section-title">Teams</h2>
+<h2 class="title">Teams</h2>
 
 <div class="teams">
 
-<div class="team-card">
+<div class="team">
 <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
-<h3>Team Falcons</h3>
+<h3>Falcons FC</h3>
 </div>
 
-<div class="team-card">
+<div class="team">
 <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
 <h3>Red Warriors</h3>
 </div>
 
-<div class="team-card">
+<div class="team">
 <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
 <h3>Blue Strikers</h3>
 </div>
 
-<div class="team-card">
+<div class="team">
 <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
 <h3>Golden Lions</h3>
 </div>
@@ -240,26 +260,26 @@ font-size:14px;
 
 <section>
 
-<h2 class="section-title">Upcoming Matches</h2>
+<h2 class="title">Upcoming Matches</h2>
 
 <div class="matches">
 
 <div class="match">
 <h3>Falcons vs Warriors</h3>
-<p>Date: April 10</p>
-<p>Stadium: National Arena</p>
+<p>April 10</p>
+<p>National Stadium</p>
 </div>
 
 <div class="match">
 <h3>Strikers vs Lions</h3>
-<p>Date: April 11</p>
-<p>Stadium: Champions Field</p>
+<p>April 11</p>
+<p>City Arena</p>
 </div>
 
 <div class="match">
 <h3>Falcons vs Lions</h3>
-<p>Date: April 13</p>
-<p>Stadium: City Stadium</p>
+<p>April 13</p>
+<p>Champions Field</p>
 </div>
 
 </div>
@@ -268,7 +288,7 @@ font-size:14px;
 
 <section>
 
-<h2 class="section-title">Standings</h2>
+<h2 class="title">Standings</h2>
 
 <table>
 
@@ -311,8 +331,43 @@ font-size:14px;
 
 </section>
 
+<section>
+
+<h2 class="title">Tournament Bracket</h2>
+
+<div class="bracket">
+
+<div class="round">
+<h3>Quarter Finals</h3>
+
+<div class="game">Falcons vs Warriors</div>
+<div class="game">Strikers vs Lions</div>
+
+</div>
+
+<div class="round">
+<h3>Semi Finals</h3>
+
+<div class="game">Winner Match 1</div>
+<div class="game">Winner Match 2</div>
+
+</div>
+
+<div class="round">
+<h3>Final</h3>
+
+<div class="game">Champion Match</div>
+
+</div>
+
+</div>
+
+</section>
+
 <footer>
-<p>© 2026 Champions Cup | All Rights Reserved</p>
+
+<p>© 2026 Global Champions Cup</p>
+
 </footer>
 
 </body>
